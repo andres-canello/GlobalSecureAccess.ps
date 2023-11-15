@@ -5,17 +5,11 @@ function New-GSAPrivateAccessAppNetworkSegment {
 	.DESCRIPTION
 		Adds a network segment to an existing Private Access app.
 	.EXAMPLE
-	    PS C:\>Get-AzureADUserAuthenticationMethod -ObjectId user@contoso.com -Phone
-		Gets the phone authentication methods set for the user.
+	    PS C:\>New-GSAPrivateAccessAppNetworkSegment -DestinationHost ssh.contoso.com -Ports 22 -Protocol tcp -ObjectID 6e8e602b-466e-446c-99fa-ac4151748628
+		Adds a network segment to an existing Private Access app.
 	.EXAMPLE
-	    PS C:\>Get-AzureADUser -SearchString user1@contoso.com | Get-AzureADUserAuthenticationMethod
-		Gets the phone authentication methods set for the user from the pipeline.
-	.EXAMPLE
-	    PS C:\>Get-AzureADUserAuthenticationMethod -UserPrincipalName user@contoso.com -Phone
-		Gets the phone authentication methods set for the user.
-	.EXAMPLE
-	    PS C:\>Get-AzureADUserAuthenticationMethod user@contoso.com -MicrosoftAuthenticator -ReturnDevices
-		Gets the Microsoft Authenticator authentication methods set for the user including the properties of the device object (only for Phone Sign In).
+	    PS C:\>Get-GSAPrivateAccessApp 6e8e602b-466e-446c-99fa-ac4151748628 | New-GSAPrivateAccessAppNetworkSegment -DestinationHost ssh.contoso.com -Ports 22 -Protocol tcp
+		Adds a network segment to an existing Private Access app, getting the app id from the pipeline.
 	#>
 	[CmdletBinding()]
 	param (
