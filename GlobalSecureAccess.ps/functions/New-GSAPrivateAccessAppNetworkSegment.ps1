@@ -23,16 +23,19 @@ function New-GSAPrivateAccessAppNetworkSegment {
 		[string]
 		$DestinationHost,
 		
-		[Parameter(Mandatory = $True)]
+		[Parameter(Mandatory = $False)]
 		[string[]]
 		$Ports,
 		
-		[Parameter(Mandatory = $True)]
+		[Parameter(Mandatory = $False)]
 		[ValidateSet("TCP", "UDP")]
 		[string]
-		$Protocol
+		$Protocol,
 
-		
+		[Parameter(Mandatory = $True)]
+		[ValidateSet("IP", "dnsSuffix")]
+		[string]
+		$DestinationType
 	)
 
 
@@ -54,10 +57,21 @@ function New-GSAPrivateAccessAppNetworkSegment {
 
 	}
 
+	if ($DestinationType -eq "IP")
+	{
 	$body = @{
 		destinationHost = $DestinationHost.ToLower()
 		protocol = $Protocol.ToLower()
 		ports = $portRanges
+		destinationType = $DestinationType
+		}
+	}
+	else
+	{
+		$body = @{
+			destinationHost = $DestinationHost.ToLower()
+			destinationType = $DestinationType
+			}
 	}
 
 	$bodyJson = $body | ConvertTo-Json -Depth 99 -Compress
