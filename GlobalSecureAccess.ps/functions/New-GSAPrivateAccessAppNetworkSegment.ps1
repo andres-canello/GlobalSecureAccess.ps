@@ -33,7 +33,7 @@ function New-GSAPrivateAccessAppNetworkSegment {
 		$Protocol,
 
 		[Parameter(Mandatory = $True)]
-		[ValidateSet("IP", "dnsSuffix")]
+		[ValidateSet("IP", "dnsSuffix", "ipRangeCidr","ipRange","FQDN")]
 		[string]
 		$DestinationType
 	)
@@ -57,20 +57,20 @@ function New-GSAPrivateAccessAppNetworkSegment {
 
 	}
 
-	if ($DestinationType -eq "IP")
+	if ($DestinationType -eq "IP","ipRangeCidr","ipRange","FQDN")
 	{
 	$body = @{
 		destinationHost = $DestinationHost.ToLower()
 		protocol = $Protocol.ToLower()
 		ports = $portRanges
-		destinationType = $DestinationType
+		destinationType = $DestinationType.ToLower()
 		}
 	}
 	else
 	{
 		$body = @{
 			destinationHost = $DestinationHost.ToLower()
-			destinationType = $DestinationType
+			destinationType = $DestinationType.ToLower()
 			}
 	}
 
