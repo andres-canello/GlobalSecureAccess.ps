@@ -33,7 +33,7 @@ function New-GSAPrivateAccessAppNetworkSegment {
 		$Protocol,
 
 		[Parameter(Mandatory = $True)]
-		[ValidateSet("IP", "dnsSuffix", "ipRangeCidr","ipRange","FQDN")]
+		[ValidateSet("ipAddress", "dnsSuffix", "ipRangeCidr","ipRange","FQDN")]
 		[string]
 		$DestinationType
 	)
@@ -57,21 +57,29 @@ function New-GSAPrivateAccessAppNetworkSegment {
 
 	}
 
-	if ($DestinationType -eq "IP","ipRangeCidr","ipRange","FQDN")
-	{
-	$body = @{
-		destinationHost = $DestinationHost.ToLower()
-		protocol = $Protocol.ToLower()
-		ports = $portRanges
-		destinationType = $DestinationType.ToLower()
-		}
-	}
-	else
+	if ($DestinationType -eq "dnsSuffix")
 	{
 		$body = @{
 			destinationHost = $DestinationHost.ToLower()
-			destinationType = $DestinationType.ToLower()
+			destinationType = 'dnsSuffix'
 			}
+	}
+	else
+	{
+			switch ($DestinationType) {
+				"ipAddress" { $dstType = 'ipAddress' }
+				"ipRange" { $dstType = 'ipRange' }
+				"fqdn" { $dstType = 'fqdn' }
+				"ipRangeCidr" { $dstType = 'ipRangeCidr' }
+			}
+		$body = @{
+			destinationHost = $DestinationHost.ToLower()
+			protocol = $Protocol.ToLower()
+			ports = $portRanges
+			destinationType = $dstType
+
+			}
+
 	}
 
 	$bodyJson = $body | ConvertTo-Json -Depth 99 -Compress
