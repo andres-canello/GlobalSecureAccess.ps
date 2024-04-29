@@ -29,7 +29,7 @@ function New-GSAPrivateAccessAppNetworkSegment {
 		
 		[Parameter(Mandatory = $False)]
 		[ValidateSet("TCP", "UDP")]
-		[string]
+		[string[]]
 		$Protocol,
 
 		[Parameter(Mandatory = $True)]
@@ -67,14 +67,14 @@ function New-GSAPrivateAccessAppNetworkSegment {
 	else
 	{
 			switch ($DestinationType) {
-				"ipAddress" { $dstType = 'ipAddress' }
+				"ipAddress" { $dstType = 'ip' }
 				"ipRange" { $dstType = 'ipRange' }
 				"fqdn" { $dstType = 'fqdn' }
 				"ipRangeCidr" { $dstType = 'ipRangeCidr' }
 			}
 		$body = @{
 			destinationHost = $DestinationHost.ToLower()
-			protocol = $Protocol.ToLower()
+			protocol = $Protocol.ToLower() -join ","
 			ports = $portRanges
 			destinationType = $dstType
 
