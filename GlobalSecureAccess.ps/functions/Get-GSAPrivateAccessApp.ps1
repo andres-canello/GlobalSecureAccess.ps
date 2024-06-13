@@ -37,7 +37,7 @@ function Get-GSAPrivateAccessApp {
 
 	switch ($PSCmdlet.ParameterSetName) {
 		"AllPrivateAccessApps" {
-			Invoke-GSARequest @common -Query "https://graph.microsoft.com/beta/applications?`$count=true&`$select=displayName,appId,id,tags,createdDateTime,servicePrincipalType,createdDateTime,servicePrincipalNames,&`$filter=tags/Any(x: x eq 'PrivateAccessNonWebApplication') or tags/Any(x: x eq 'NetworkAccessManagedApplication') or tags/Any(x: x eq 'NetworkAccessQuickAccessApplication')"
+			Invoke-GSARequest @common -Query 'https://graph.microsoft.com/beta/applications?$count=true&$select=displayName,appId,id,tags,createdDateTime,servicePrincipalType,createdDateTime,servicePrincipalNames,&$filter=tags/Any(x: x eq ''PrivateAccessNonWebApplication'') or tags/Any(x: x eq ''NetworkAccessManagedApplication'') or tags/Any(x: x eq ''NetworkAccessQuickAccessApplication'')'
 			break
 		}			
 		"SingleAppID" {
