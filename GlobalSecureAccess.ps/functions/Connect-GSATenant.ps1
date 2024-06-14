@@ -29,7 +29,7 @@ function Connect-GSATenant {
             [string]$Environment = 'Global'
     )    
     Connect-MgGraph -TenantId $TenantId -Environment $Environment -Scopes 'NetworkAccessPolicy.ReadWrite.All', 
-        'Directory.Read.All', 'Application.ReadWrite.All'
+        'Directory.ReadWrite.All', 'Application.ReadWrite.All', 'NetworkAccess.ReadWrite.All'
 
     Get-MgContext
     $global:TenantID = (Get-MgContext).TenantId

@@ -8,8 +8,8 @@ function New-GSAPrivateAccessApp {
 	    PS C:\>New-GSAPrivateAccessApp
 		
 	.EXAMPLE
-	    PS C:\>Get-GSAPrivateAccessApp -ObjectID 6e8e602b-466e-446c-99fa-ac4151748628
-		Gets a single Private Access app.
+	    PS C:\>New-GSAPrivateAccessApp -AppName "MyPrivateAccessApp" -ConnectorGroupID "00000000-0000-0000-0000-000000000000"
+		Creates a Private Access app.
 	#>
 	[CmdletBinding(DefaultParameterSetName = 'AllPrivateAccessApps')]
 	param (
@@ -73,4 +73,6 @@ function New-GSAPrivateAccessApp {
 
 	}
 		
+	Invoke-GSARequest @params -Raw
+	
 }
