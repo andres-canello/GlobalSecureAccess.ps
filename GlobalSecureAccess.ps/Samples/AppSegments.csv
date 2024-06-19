@@ -1,4 +1,4 @@
-clientID,iprange,ports,protocol,type
+AppOId,iprange,ports,protocol,type
 58c59e74-5b92-4578-bef5-36b86ac97f0a,10.106.97.0/24,"1-21,23-442,444-65535","TCP,udp",ipRangeCidr
 58c59e74-5b92-4578-bef5-36b86ac97f0a,10.106.96.0/24,"1-21,23-442,444-65535","udp",ipRangeCidr
 58c59e74-5b92-4578-bef5-36b86ac97f0a,10.106.95.0/24,"1-21","udp",ipRangeCidr
