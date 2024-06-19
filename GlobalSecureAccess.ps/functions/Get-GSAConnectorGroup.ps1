@@ -5,7 +5,7 @@ function Get-GSAConnectorGroup {
 	.DESCRIPTION
 		Gets Private Access Connector Group.
 	.EXAMPLE
-	    PS C:\>Gets Private Access Connector Group.
+	    PS C:\>Get-GSAConnectorGroup
 		Gets Private Access Connector Group.
 
 	#>

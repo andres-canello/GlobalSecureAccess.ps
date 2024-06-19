@@ -5,8 +5,14 @@ function Get-GSAConnector {
 	.DESCRIPTION
 		Gets Private Access Connector.
 	.EXAMPLE
-	    PS C:\>Gets Private Access Connector.
-		Gets Private Access Connector.
+	    PS C:\>Get-GSAConnector
+		Gets all Private Access Connectors.
+	.EXAMPLE
+	    PS C:\>Get-GSAConnector -ConnectorID '00000000-0000-0000-0000-000000000000'
+		Gets a single Private Access Connector.
+	.EXAMPLE
+	    PS C:\>Get-GSAConnector -ConnectorGroupID '00000000-0000-0000-0000-000000000000'
+		Gets all Private Access Connector in a Connector Group
 
 	#>
 	[CmdletBinding(DefaultParameterSetName = 'AllConnectors')]
