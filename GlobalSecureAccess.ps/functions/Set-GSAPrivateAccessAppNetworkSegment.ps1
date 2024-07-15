@@ -33,7 +33,7 @@ function Set-GSAPrivateAccessAppNetworkSegment {
 		
 		[Parameter(Mandatory = $False)]
 		[ValidateSet("TCP", "UDP")]
-		[string]
+		[string[]]
 		$Protocol,
 
 		[Parameter(Mandatory = $False)]
