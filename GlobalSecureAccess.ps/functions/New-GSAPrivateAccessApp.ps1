@@ -20,7 +20,7 @@ function New-GSAPrivateAccessApp {
 		
 		[Parameter(Mandatory = $True)]
 		[string]
-		$ConnectorGroupID
+		$ConnectorGroupId
 	)
 
 
@@ -62,7 +62,7 @@ function New-GSAPrivateAccessApp {
 	Invoke-GSARequest @params -Raw
 
 	$bodyJson = @{
-		"@odata.id" = "https://graph.microsoft.com/beta/onPremisesPublishingProfiles/applicationproxy/connectorGroups/$ConnectorGroupID"
+		"@odata.id" = "https://graph.microsoft.com/beta/onPremisesPublishingProfiles/applicationproxy/connectorGroups/$ConnectorGroupId"
 	} | ConvertTo-Json -Depth 99 -Compress
 
 	# Assigns the connector group to the app
