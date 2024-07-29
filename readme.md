@@ -1,5 +1,19 @@
 ﻿# GlobalSecureAccess.ps
 
+==============================================================
+
+NOTE: I'm implementing the commands in this module into Microsoft's Entra PowerShell Beta module https://learn.microsoft.com/en-us/powershell/entra-powershell/installation \
+Once I finish, I'll flag this module as deprecated.\
+These are the commands already implemented in Entra PS Beta:\
+\
+Get-GSAPrivateAccessAppNetworkSegment     -> Get-EntraBetaPrivateAccessApplicationSegment\
+New-GSAPrivateAccessAppNetworkSegment     -> New-EntraBetaPrivateAccessApplicationSegment\
+Remove-GSAPrivateAccessAppNetworkSegment  -> Remove-EntraBetaPrivateAccessApplicationSegment\
+
+==============================================================
+
+
+
 This is a community-supported PowerShell module which simplifies managing Entra Private Access apps. The module calls the Graph API endpoints to perform common operations.
 Please contribute and report issues.
 
